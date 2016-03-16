@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<title>Path</title>
+
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+
+    <style>
+      h4,
+      p{ margin-left: 50px; }
+      body { font-family: Helvetica, Arial, sans-serif;
+      font-size: 75%; background-color: #ddd; }
+      .option{ text-decoration: underline; color: #E85676; }
+      .done{ text-decoration: line-through; color: #777; }
+      #currentDeg,#pathLength,#pathData{ color: darkblue; }
+      #pathData{ margin-left: 20px; }
+
+      #arrow{ position: absolute; top:0; left:0; }
+
+    </style>
+
+  </head>
+
+  <body>
+    <h2>Path animation on canvas</h2>
+      <div id="wrapper"></div>
+      <img id="arrow" src="arrow.png" height="20px" width="20px">
+
+      <h3>What is this?</h3>
+      <div>Using javascript to define an SVG path, then use this path as the basis for animation.</div>
+
+      <div>
+        <h4>Options:</h4>
+        <ul>
+          <li>Includes option to <span class="option" id="showPath">display the path</span>, perhaps useful for development / debugging.</li>
+          <li>Includes rotate to path calculation. Angle at current position: <span id="currentDeg"></span>&deg;</li>
+          <li>Toggle the graphics to see the rotation: <span class="option" id="showDot">dot</span>; <span class="option" id="showLine">line</span>; <span class="option" id="showTrails">trails</span>.</li>
+          <li>Rotation can be applied to DOM elements. <span class="option" id="showArrow">Toggle DOM arrow</span>.</li>
+          <li>Auto-play or interactive <span class="option" id="interact">toggle</span>. If interactive, animation is controlled by mouse.x position over the canvas.</li>
+        </ul>
+        <div>
+          The path is Silverstone racetrack which I drew and exported using Flash, then quickly reformatted the data for this system.<br />
+          This path is <span id="pathLength"></span>px long.<br />
+          It is defined by the following string:<br />
+          <span id="pathData"></span><br />
+          This simple example uses a linear progression to animate the dot along the line, but it could easily be eased.
+        </div>
+      </div>
+
+      <div>
+        <h4>Methods:</h4>
+        I have written a set of familiar drawing API like methods to contruct the SVG path.<br />
+        Not strictly necessary for the initial banner purpose, but will be crucial for any interactive line drawing:
+        <ul>
+          <li>moveTo</li>
+          <li>lineTo</li>
+          <li>quadraticCurveTo</li>
+          <li>bezierCurveTo</li>
+        </ul>
+      </div>
+
+      <h4>Thoughts for development....</h4>
+      <ul>
+        <li class="done">Add option to display path</li>
+        <li class="done">Orient to path
+          <ul>
+            <li>No native method, so...</li>
+            <li>Look ahead and calculate line angle</li>
+          </ul></li>
+        <li class="done">Make playback interactive</li>
+        <li>Make build interactive</li>
+      </ul>
+
+    <script src='main.js'></script>
+  </body>
+
+</html>
